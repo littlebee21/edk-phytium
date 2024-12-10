@@ -1,0 +1,70 @@
+## @file
+#  Phytium E2000 acpi platform driver.
+#
+#  Copyright (C) 2022, Phytium Technology Co., Ltd. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+
+[Defines]
+  INF_VERSION                    = 0x0001001B
+  BASE_NAME                      = AcpiPlatform
+  MODULE_UNI_FILE                = AcpiPlatform.uni
+  FILE_GUID                      = 32036250-2d15-11ed-930e-7b65fafc9aad
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = AcpiPlatformEntryPoint
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC AARCH64
+#
+
+[Sources]
+  AcpiPlatform.c
+  AcpiUpdate.c
+  AcpiUpdate.h
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  ArmPlatformPkg/ArmPlatformPkg.dec
+  DynamicTablesPkg/DynamicTablesPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+
+[LibraryClasses]
+  BaseLib
+  BaseMemoryLib
+  DebugLib
+  DxeServicesLib
+  DynamicAmlLib
+  HobLib
+  PcdLib
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+  UefiLib
+  UefiRuntimeServicesTableLib
+
+[Guids]
+
+[Protocols]
+  gAcpiUpdateAfterPciEmunGuid
+  gEfiAcpiTableProtocolGuid
+  gEfiAcpiSdtProtocolGuid
+
+[Pcd]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiTableStorageFile    ## CONSUMES
+
+[FixedPcd]
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpChanel0Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpChanel1Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpCmaEnable
+
+[Depex]
+  gEfiAcpiTableProtocolGuid
+
+[UserExtensions.TianoCore."ExtraFiles"]
+  AcpiPlatformExtra.uni

@@ -1,0 +1,277 @@
+/** @file
+  VFR file used by the pcie configuration component.
+**/
+#include "PcieConfigFormGuid.h"
+#include "PcieConfigData.h"
+#include <Guid/HiiPlatformSetupFormset.h>
+
+formset
+  guid = PCIECONFIG_FORMSET_GUID,
+  title = STRING_TOKEN (STR_FORM_PCIECONFIG_TITLE),
+  help = STRING_TOKEN (STR_PCIECONFIG_MANAGER_HELP),
+  classguid = EFI_HII_PLATFORM_SETUP_FORMSET_GUID,
+
+  varstore PCIE_CONFIG_DATA,
+    varid = VARSTORE_ID_PCIE_CONFIG,
+    name = PcieConfigSetup,
+    guid = PCIECONFIG_FORMSET_GUID;
+
+  form formid = FORM_PCIECONFIG_ID,
+    title = STRING_TOKEN (STR_FORM_PCIECONFIG_TITLE);
+
+    // Add this invisible text in order to indicate enter pcie config form.
+    // To trigger the form open action.
+
+    suppressif TRUE;
+      text
+        help  = STRING_TOKEN (STR_NONE),
+        text  = STRING_TOKEN (STR_NONE),
+        flags = INTERACTIVE,
+        key   = 0x7101;
+    endif;
+    //
+    //1 pcie0
+    //
+    subtitle text = STRING_TOKEN(STR_PCIE0);
+
+    oneof name = Pcie0SplitMode,
+      varid = PCIE_CONFIG_DATA.PcieConfig[0].SplitMode,
+      prompt    = STRING_TOKEN (STR_PCIE_SPLIT_MODE),
+      help      = STRING_TOKEN (STR_PCIE_SPLIT_MODE_HELP),
+      option text = STRING_TOKEN (STR_X1X1), value=1, flags = DEFAULT | RESET_REQUIRED;
+      option text = STRING_TOKEN (STR_X1X0), value=5, flags = RESET_REQUIRED;
+      option text = STRING_TOKEN (STR_X0X1), value=3, flags = DEFAULT | RESET_REQUIRED;
+      option text = STRING_TOKEN (STR_X0X0), value=7, flags = RESET_REQUIRED;
+    endoneof;
+    
+    subtitle text = STRING_TOKEN(STR_NONE);
+
+    //
+    //1.1 pcie0-c0
+    //
+    //X0X0=0/7  X1X1=1  X0X1=3  X1X0=5
+    suppressif questionref (Pcie0SplitMode) == 7 OR questionref (Pcie0SplitMode) == 5;
+    oneof name = Pcie0C0Disable,
+      varid = PCIE_CONFIG_DATA.PcieConfig[0].PcieControl[0].DisEnable,
+      prompt    = STRING_TOKEN (STR_PCIE_CONTROL0_ENABLE),
+      help      = STRING_TOKEN (STR_PCIE_CONTROL0_ENABLE_HELP),
+      option text = STRING_TOKEN (STR_ENABLE), value=0, flags = DEFAULT | RESET_REQUIRED;
+      option text = STRING_TOKEN (STR_DISABLE), value=1, flags = RESET_REQUIRED;
+    endoneof;
+    
+    suppressif questionref (Pcie0C0Disable) == 1;
+      oneof varid = PCIE_CONFIG_DATA.PcieConfig[0].PcieControl[0].Speed,
+        prompt    = STRING_TOKEN (STR_PCIE_CONTROL0_SPEED),
+        help      = STRING_TOKEN (STR_PCIE_CONTROL0_SPEED_HELP),
+        option text = STRING_TOKEN (STR_AUTO), value=0, flags = RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_GEN1), value=1, flags = RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_GEN2), value=2, flags = RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_GEN3), value=3, flags = DEFAULT | RESET_REQUIRED;
+      endoneof;
+
+      numeric varid   = PCIE_CONFIG_DATA.PcieConfig[0].PcieControl[0].EqualValue,
+            prompt  = STRING_TOKEN(STR_PCIE_CONTROL0_EQ),
+            help    = STRING_TOKEN(STR_PCIE_CONTROL0_EQ_HELP),
+            flags   = DISPLAY_UINT_DEC | INTERACTIVE,
+            minimum = 0,
+            maximum = 10,
+            step    = 1,
+            default = 7,
+      endnumeric;
+    endif;
+    endif;
+    subtitle text = STRING_TOKEN(STR_NONE);
+
+    //
+    //1.2 pcie0-c1
+    //
+    suppressif  questionref (Pcie0SplitMode) == 3 OR questionref (Pcie0SplitMode) == 7;
+      oneof name = Pcie0C1Disable,
+        varid = PCIE_CONFIG_DATA.PcieConfig[0].PcieControl[1].DisEnable,
+        prompt    = STRING_TOKEN (STR_PCIE_CONTROL1_ENABLE),
+        help      = STRING_TOKEN (STR_PCIE_CONTROL1_ENABLE_HELP),
+        option text = STRING_TOKEN (STR_ENABLE), value=0, flags = DEFAULT | RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_DISABLE), value=1, flags = RESET_REQUIRED;
+      endoneof;
+
+      suppressif questionref (Pcie0C1Disable) == 1;
+        oneof varid = PCIE_CONFIG_DATA.PcieConfig[0].PcieControl[1].Speed,
+          prompt    = STRING_TOKEN (STR_PCIE_CONTROL1_SPEED),
+          help      = STRING_TOKEN (STR_PCIE_CONTROL1_SPEED_HELP),
+          option text = STRING_TOKEN (STR_AUTO), value=0, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN1), value=1, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN2), value=2, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN3), value=3, flags = DEFAULT | RESET_REQUIRED;
+        endoneof;
+
+        numeric varid   = PCIE_CONFIG_DATA.PcieConfig[0].PcieControl[1].EqualValue,
+              prompt  = STRING_TOKEN(STR_PCIE_CONTROL1_EQ),
+              help    = STRING_TOKEN(STR_PCIE_CONTROL1_EQ_HELP),
+              flags   = DISPLAY_UINT_DEC | INTERACTIVE,
+              minimum = 0,
+              maximum = 10,
+              step    = 1,
+              default = 7,
+        endnumeric;
+      endif;
+    endif;
+    subtitle text = STRING_TOKEN(STR_NONE);
+
+   //PCIE1
+  subtitle text = STRING_TOKEN(STR_PCIE1);
+    //X0=0,X4= 1; X2X1X1=3; X1X1X1X1=5
+    oneof name = Pcie1SplitMode,
+      varid = PCIE_CONFIG_DATA.PcieConfig[1].SplitMode,
+      prompt    = STRING_TOKEN (STR_PCIE_SPLIT_MODE),
+      help      = STRING_TOKEN (STR_PCIE_SPLIT_MODE_HELP),
+      option text = STRING_TOKEN (STR_X4), value=1, flags = DEFAULT | RESET_REQUIRED;
+      option text = STRING_TOKEN (STR_X2X1X1), value=3, flags = RESET_REQUIRED;
+      option text = STRING_TOKEN (STR_X1X1X1X1), value=5, flags = DEFAULT | RESET_REQUIRED;
+      option text = STRING_TOKEN (STR_X0), value=0, flags = RESET_REQUIRED;
+    endoneof;
+    
+    subtitle text = STRING_TOKEN(STR_NONE);
+
+    //
+    //1.1 pcie1-c0
+    //
+    suppressif questionref (Pcie1SplitMode) == 0;
+    oneof name = Pcie1C0Disable,
+      varid = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[0].DisEnable,
+      prompt    = STRING_TOKEN (STR_PCIE_CONTROL0_ENABLE),
+      help      = STRING_TOKEN (STR_PCIE_CONTROL0_ENABLE_HELP),
+      option text = STRING_TOKEN (STR_ENABLE), value=0, flags = DEFAULT | RESET_REQUIRED;
+      option text = STRING_TOKEN (STR_DISABLE), value=1, flags = RESET_REQUIRED;
+    endoneof;
+    
+    suppressif questionref (Pcie1C0Disable) == 1;
+      oneof varid = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[0].Speed,
+        prompt    = STRING_TOKEN (STR_PCIE_CONTROL0_SPEED),
+        help      = STRING_TOKEN (STR_PCIE_CONTROL0_SPEED_HELP),
+        option text = STRING_TOKEN (STR_AUTO), value=0, flags = RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_GEN1), value=1, flags = RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_GEN2), value=2, flags = RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_GEN3), value=3, flags = DEFAULT | RESET_REQUIRED;
+      endoneof;
+
+      numeric varid   = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[0].EqualValue,
+            prompt  = STRING_TOKEN(STR_PCIE_CONTROL0_EQ),
+            help    = STRING_TOKEN(STR_PCIE_CONTROL0_EQ_HELP),
+            flags   = DISPLAY_UINT_DEC | INTERACTIVE,
+            minimum = 0,
+            maximum = 10,
+            step    = 1,
+            default = 7,
+      endnumeric;
+    endif;
+    endif;
+    subtitle text = STRING_TOKEN(STR_NONE);
+
+    //
+    //1.2 pcie1-c1   //X0=0,X4= 1; X2X1X1=3; X1X1X1X1=5
+    //
+    suppressif  questionref (Pcie1SplitMode) == 0 OR questionref (Pcie1SplitMode) == 1 OR questionref (Pcie1SplitMode) == 3;
+      oneof name = Pcie1C1Disable,
+        varid = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[1].DisEnable,
+        prompt    = STRING_TOKEN (STR_PCIE_CONTROL1_ENABLE),
+        help      = STRING_TOKEN (STR_PCIE_CONTROL1_ENABLE_HELP),
+        option text = STRING_TOKEN (STR_ENABLE), value=0, flags = DEFAULT | RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_DISABLE), value=1, flags = RESET_REQUIRED;
+      endoneof;
+
+      suppressif questionref (Pcie1C1Disable) == 1;
+        oneof varid = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[1].Speed,
+          prompt    = STRING_TOKEN (STR_PCIE_CONTROL1_SPEED),
+          help      = STRING_TOKEN (STR_PCIE_CONTROL1_SPEED_HELP),
+          option text = STRING_TOKEN (STR_AUTO), value=0, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN1), value=1, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN2), value=2, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN3), value=3, flags = DEFAULT | RESET_REQUIRED;
+        endoneof;
+
+        numeric varid   = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[1].EqualValue,
+              prompt  = STRING_TOKEN(STR_PCIE_CONTROL1_EQ),
+              help    = STRING_TOKEN(STR_PCIE_CONTROL1_EQ_HELP),
+              flags   = DISPLAY_UINT_DEC | INTERACTIVE,
+              minimum = 0,
+              maximum = 10,
+              step    = 1,
+              default = 7,
+        endnumeric;
+      endif;
+    endif;
+    subtitle text = STRING_TOKEN(STR_NONE);
+    
+    //
+    //1.2 pcie1-c2  //X0=0,X4= 1; X2X1X1=3; X1X1X1X1=5
+    //
+    suppressif  questionref (Pcie1SplitMode) == 0 OR questionref (Pcie1SplitMode) == 1;
+      oneof name = Pcie1C2Disable,
+        varid = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[2].DisEnable,
+        prompt    = STRING_TOKEN (STR_PCIE_CONTROL2_ENABLE),
+        help      = STRING_TOKEN (STR_PCIE_CONTROL2_ENABLE_HELP),
+        option text = STRING_TOKEN (STR_ENABLE), value=0, flags = DEFAULT | RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_DISABLE), value=1, flags = RESET_REQUIRED;
+      endoneof;
+
+      suppressif questionref (Pcie1C2Disable) == 1;
+        oneof varid = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[2].Speed,
+          prompt    = STRING_TOKEN (STR_PCIE_CONTROL2_SPEED),
+          help      = STRING_TOKEN (STR_PCIE_CONTROL2_SPEED_HELP),
+          option text = STRING_TOKEN (STR_AUTO), value=0, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN1), value=1, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN2), value=2, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN3), value=3, flags = DEFAULT | RESET_REQUIRED;
+        endoneof;
+
+        numeric varid   = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[2].EqualValue,
+              prompt  = STRING_TOKEN(STR_PCIE_CONTROL2_EQ),
+              help    = STRING_TOKEN(STR_PCIE_CONTROL2_EQ_HELP),
+              flags   = DISPLAY_UINT_DEC | INTERACTIVE,
+              minimum = 0,
+              maximum = 10,
+              step    = 1,
+              default = 7,
+        endnumeric;
+      endif;
+    endif;
+    subtitle text = STRING_TOKEN(STR_NONE);
+
+     //
+    //1.2 pcie1-c3   //X0=0, X4=1; X2X1X1=3; X1X1X1X1=5
+    //
+    suppressif  questionref (Pcie1SplitMode) == 0 OR questionref (Pcie1SplitMode) == 1;
+      oneof name = Pcie1C3Disable,
+        varid = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[3].DisEnable,
+        prompt    = STRING_TOKEN (STR_PCIE_CONTROL3_ENABLE),
+        help      = STRING_TOKEN (STR_PCIE_CONTROL3_ENABLE_HELP),
+        option text = STRING_TOKEN (STR_ENABLE), value=0, flags = DEFAULT | RESET_REQUIRED;
+        option text = STRING_TOKEN (STR_DISABLE), value=1, flags = RESET_REQUIRED;
+      endoneof;
+
+      suppressif questionref (Pcie1C3Disable) == 1;
+        oneof varid = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[3].Speed,
+          prompt    = STRING_TOKEN (STR_PCIE_CONTROL3_SPEED),
+          help      = STRING_TOKEN (STR_PCIE_CONTROL3_SPEED_HELP),
+          option text = STRING_TOKEN (STR_AUTO), value=0, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN1), value=1, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN2), value=2, flags = RESET_REQUIRED;
+          option text = STRING_TOKEN (STR_GEN3), value=3, flags = DEFAULT | RESET_REQUIRED;
+        endoneof;
+
+        numeric varid   = PCIE_CONFIG_DATA.PcieConfig[1].PcieControl[3].EqualValue,
+              prompt  = STRING_TOKEN(STR_PCIE_CONTROL3_EQ),
+              help    = STRING_TOKEN(STR_PCIE_CONTROL3_EQ_HELP),
+              flags   = DISPLAY_UINT_DEC | INTERACTIVE,
+              minimum = 0,
+              maximum = 10,
+              step    = 1,
+              default = 7,
+        endnumeric;
+      endif;
+    endif;
+    
+   subtitle text = STRING_TOKEN(STR_NONE);
+  endform;
+
+endformset;

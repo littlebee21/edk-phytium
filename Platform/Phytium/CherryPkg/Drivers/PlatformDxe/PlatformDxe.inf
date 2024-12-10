@@ -1,0 +1,127 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = PlatformDxe
+  FILE_GUID                      = 405b2307-6839-4d52-aeb9-bece6425281F
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PlatformDxeInitialise
+
+[Sources.common]
+  PlatformDxe.c
+  Type.c
+  Type.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ArmPkg/ArmPkg.dec
+  ArmPlatformPkg/ArmPlatformPkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+
+[LibraryClasses]
+  ArmPlatformLib
+  BaseMemoryLib
+  DxeServicesLib
+  DxeServicesTableLib
+  UefiLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  DxeServicesTableLib
+  PcdLib
+  HiiLib
+  DxeServicesLib
+  NonDiscoverableDeviceRegistrationLib
+  PadLib
+  UefiRuntimeServicesTableLib
+  ArmSmcLib
+
+[Guids]
+  gPsuUsb3NonDiscoverableDeviceGuid
+  gSocSataNonDiscoverableDeviceGuid
+  gSocDcDpNonDiscoverableDeviceGuid
+  gGmuNonDiscoverableDeviceGuid
+  gSocDcDpConfigGuid
+  gDdrTrainInfoAddrHobGuid
+  gPhytiumUsb2NonDiscoverableDeviceGuid
+
+[Pcd]
+  gArmTokenSpaceGuid.PcdFdBaseAddress
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution
+  gPhytiumPlatformTokenSpaceGuid.PcdDdrTrainInfoSaveBaseAddress
+
+[FixedPcd]
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuUsb30BaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuUsb30Region
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuUsb31BaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuUsb31Region
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuSataBaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuSataRegion
+  gPhytiumPlatformTokenSpaceGuid.PcdGsdSataBaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdGsdSataRegion
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpBaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpRegion
+  gPhytiumPlatformTokenSpaceGuid.PcdDpPhyBaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdDpPhyRegion
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu0BaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu0Region
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu1BaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu1Region
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu2BaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu2Region
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu3BaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu3Region
+  gPhytiumPlatformTokenSpaceGuid.PcdPadInfoAddr
+
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpConfig
+  #Mac 0
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Interface
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Autoeng
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Speed
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Duplex
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Mac
+  #Mac 1
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Interface
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Autoeng
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Speed
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Duplex
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Mac
+  #Mac 2
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Interface
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Autoeng
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Speed
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Duplex
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Mac
+  #Mac 3
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Interface
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Autoeng
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Speed
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Duplex
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Mac
+  #usb
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb30Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb31Enable
+  #sata
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumPsuSataEnable
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGsdSataEnable
+  #dp
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpChanel0Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpChanel1Enable
+  #Usb2.0
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P20Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P21Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P22Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P3Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P4Enable
+
+[Protocols]
+  gSpiNorFlashProtocolGuid
+
+[Depex]
+  TRUE

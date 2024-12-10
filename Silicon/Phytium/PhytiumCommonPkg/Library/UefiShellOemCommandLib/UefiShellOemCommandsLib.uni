@@ -1,0 +1,22 @@
+/** @file
+The definition of strings for commands.
+
+Copyright (C) 2022-2023, Phytium Technology Co., Ltd. All rights reserved.<BR>
+
+SPDX-License-Identifier: BSD-2-Clause-Patent
+
+**/
+
+/=#
+
+#langdef   en-US "english"
+#string STR_GEN_TOO_MANY          #language en-US "%H%s%N: Too many arguments.\r\n"
+#string STR_GEN_TOO_FEW           #language en-US "%H%s%N: Too few arguments.\r\n"
+#string STR_GEN_PARAM_INV         #language en-US "%H%s%N: Invalid argument - '%H%s%N'\r\n"
+#string STR_GEN_PROBLEM           #language en-US "%H%s%N: Unknown flag - '%H%s%N'\r\n"
+#string STR_GEN_LOAD_FILE_FAIL    #language en-US "%H%s%N: Load file fail at '%H%s%N'.\r\n"
+#string STR_GEN_ENV_NOT_FOUND     #language en-US "%H%s%N: Image_size Environment Variable not found.\r\n"
+
+#string STR_GET_HELP_OEM_MEMCP    #language en-US "memcp <dst> <src> <size>\r\n"
+#string STR_GET_HELP_OEM_BOOTEFI  #language en-US "bootefi <address>\r\n"
+

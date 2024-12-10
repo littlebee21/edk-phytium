@@ -1,0 +1,7 @@
+// /** @file
+// **/
+
+#string STR_PROPERTIES_MODULE_NAME
+#language en-US "Phytium ACPI Platform DXE Driver"
+
+

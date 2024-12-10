@@ -1,0 +1,64 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = UpdateBiosApp
+  FILE_GUID                      = 68FEB399-EC8B-440a-840E-CABEEAFD1A10
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UpdateBiosAppEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  UpdateBiosApp.c
+  UpdateBiosApp.uni
+  
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+  ArmPkg/ArmPkg.dec
+  CryptoPkg/CryptoPkg.dec
+
+[LibraryClasses]
+  DevicePathLib
+  BaseLib
+  HobLib
+  UefiRuntimeServicesTableLib
+  MemoryAllocationLib
+  UefiLib
+  UefiBootServicesTableLib
+  BaseMemoryLib
+  DebugLib
+  PrintLib
+  HiiLib
+  UefiApplicationEntryPoint
+  PcdLib
+  ArmPlatformLib
+  BaseCryptLib
+
+[Guids]
+  gEfiFileInfoGuid 
+
+[Protocols]
+  gEfiSimpleFileSystemProtocolGuid
+  gEfiBlockIoProtocolGuid
+  gSpiNorFlashProtocolGuid
+ 
+
+[Pcd]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageVariableBase64
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageVariableSize
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwWorkingBase64
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwWorkingSize
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareBase64
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareSize
+
+  gArmTokenSpaceGuid.PcdFdBaseAddress
+  gArmTokenSpaceGuid.PcdFvBaseAddress
+  gArmTokenSpaceGuid.PcdFvSize

@@ -1,0 +1,47 @@
+/** @file
+Phytium eMMC host controller driver.
+
+Copyright (C) 2022-2023, Phytium Technology Co., Ltd. All rights reserved.<BR>
+Copyright (c) 2014-2017, Linaro Limited. All rights reserved.
+Copyright (c) 2011-2013, ARM Limited. All rights reserved.
+
+SPDX-License-Identifier: BSD-2-Clause-Patent
+**/
+
+[Defines]
+  INF_VERSION                    = 0x00010019
+  BASE_NAME                      = PhytiumEmmcDxe
+  FILE_GUID                      = dc54bf9e-1878-11ed-9fd6-bf3168913baa
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PhytiumEmmcDxeInitialize
+
+[Sources.common]
+  EmmcHostDxe.c
+  EmmcHost.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+
+[LibraryClasses]
+  ArmLib
+  BaseLib
+  BaseMemoryLib
+  IoLib
+  MemoryAllocationLib
+  TimerLib
+  UefiDriverEntryPoint
+  UefiLib
+
+[Protocols]
+  gEfiCpuArchProtocolGuid
+  gEfiDevicePathProtocolGuid
+  gPhytiumMmcHostProtocolGuid
+
+[Pcd]
+  gPhytiumPlatformTokenSpaceGuid.PcdEmmcDxeBaseAddress
+
+[Depex]
+  TRUE

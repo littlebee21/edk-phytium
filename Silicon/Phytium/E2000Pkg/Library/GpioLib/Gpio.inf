@@ -1,0 +1,30 @@
+## @file
+#  Phytium E2000 gpio controller library.
+#
+#  Copyright (c) 2022, Phytium Technology Co., Ltd. All rights reserved.
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010019
+  BASE_NAME                      = GpioLib
+  FILE_GUID                      = 93A9358A-6239-11ED-B763-4BFE0B77155F
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = GpioLib
+
+[Sources]
+  Gpio.c
+
+[Packages]
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+
+[Pcd]
+
+[LibraryClasses]
+  BaseLib
+  DebugLib
+  IoLib

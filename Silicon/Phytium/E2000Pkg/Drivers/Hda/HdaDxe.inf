@@ -1,0 +1,43 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = HdaDxe
+  FILE_GUID                      = 98700595-AE00-45bd-AA1C-78D666E0F74D
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = InitializeHdaDxe
+
+[Sources]
+  HdaDxe.c
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  #UefiRuntimeLib
+  BaseLib
+  IoLib
+  ArmSmcLib
+  BaseMemoryLib
+  UefiDriverEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  DebugLib
+  MemoryAllocationLib
+  DxeServicesLib
+
+[Pcd]
+
+[FixedPcd]
+
+[Guids]
+  gEfiEventVirtualAddressChangeGuid
+
+[Protocols]
+  gEfiCpuArchProtocolGuid
+
+[Depex]
+  #TRUE
+  gEfiCpuArchProtocolGuid

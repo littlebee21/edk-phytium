@@ -1,0 +1,102 @@
+#/** @file
+#
+#  Copyright (c) 2018, Intel Corporation. All rights reserved.<BR>
+#  Copyright (c) 2011-2012, ARM Limited. All rights reserved.
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+#**/
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PlatformPei
+  FILE_GUID                      = 2ad0fc59-2314-4bf3-8633-13fa22a624a0
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+
+  ENTRY_POINT                    = InitializePlatformPeim
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 EBC ARM
+#
+
+[Sources]
+  PlatformPei.c
+  McuInfo.c
+  Board.c
+  Board.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  ArmPkg/ArmPkg.dec
+  ArmPlatformPkg/ArmPlatformPkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+
+[LibraryClasses]
+  PeimEntryPoint
+  DebugLib
+  HobLib
+  ArmSmcLib
+  ArmPlatformLib
+  PlatformPeiLib
+  PeiServicesLib
+  I2CLib
+  ParameterTableLib
+  IoLib
+  TimerLib
+  ArmPlatformLib
+  PhytiumPowerControlLib
+  PcdLib
+  PadLib
+  EcLib
+  SerialPortLib
+  PrintLib
+  ScmiProtocolLib
+  GpioLib
+
+[Ppis]
+  gEfiPeiMasterBootModePpiGuid                  # PPI ALWAYS_PRODUCED
+  gEfiPeiBootInRecoveryModePpiGuid              # PPI SOMETIMES_PRODUCED
+  gEfiPeiReadOnlyVariable2PpiGuid
+
+[FixedPcd]
+  gArmTokenSpaceGuid.PcdFdBaseAddress
+  gArmTokenSpaceGuid.PcdFdSize
+
+  gArmTokenSpaceGuid.PcdFvBaseAddress
+  gArmTokenSpaceGuid.PcdFvSize
+
+  gPhytiumPlatformTokenSpaceGuid.PcdSpdI2cControllerBaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdSpdI2cControllerSpeed
+  gPhytiumPlatformTokenSpaceGuid.PcdDdrI2cAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdDdrChannelCount
+  gPhytiumPlatformTokenSpaceGuid.PcdDdrChannel0DimmI2cAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdDdrChannel1DimmI2cAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdParameterTableBase
+
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumBoardType
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumPadTableEnable
+  gPhytiumPlatformTokenSpaceGuid.PcdDdrTrainInfoSaveBaseAddress
+
+  gPhytiumPlatformTokenSpaceGuid.PcdSata0PcieAutoDetectEnableEnable
+  gPhytiumPlatformTokenSpaceGuid.PcdSata0PcieAutoDetectPort
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumQosConfig
+  gPhytiumPlatformTokenSpaceGuid.PcdCppcFunctionEnable
+
+  gPhytiumPlatformTokenSpaceGuid.PcdMhuBaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdMhuShareMemoryBase
+  gPhytiumPlatformTokenSpaceGuid.PcdMhuConfigBaseAddress
+
+[Guids]
+  gDdrTrainInfoAddrHobGuid
+ gPcieConfigVarGuid
+
+[Depex]
+  TRUE
+

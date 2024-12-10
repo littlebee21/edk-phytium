@@ -1,0 +1,7 @@
+// /** @file
+// **/
+
+#string STR_MODULE_ABSTRACT             #language en-US "Phytium ACPI Platform Driver"
+
+#string STR_MODULE_DESCRIPTION          #language en-US "Phytium ACPI Platform Driver"
+

@@ -1,0 +1,9 @@
+/** @file
+    Provides the capbility to configure pcie in a setup browser
+    By this module, user may change the pcie configuration.
+**/
+
+#string STR_MODULE_ABSTRACT             #language en-US "Provides the capability to configure pcie config in a setup browser"
+
+#string STR_MODULE_DESCRIPTION          #language en-US "By this module, user may change the pcie config."
+

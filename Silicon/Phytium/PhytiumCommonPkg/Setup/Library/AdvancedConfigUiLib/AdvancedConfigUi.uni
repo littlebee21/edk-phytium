@@ -1,0 +1,148 @@
+///** @file
+//String definitions for advanced menu.
+//
+//Copyright (c) 2023, Phytium Technology Co., Ltd. All rights reserved.
+//
+//SPDX-License-Identifier: BSD-2-Clause-Patent
+//**/
+
+/=#
+#langdef    en-US  "English"
+
+#string STR_FORM_ADVANCEDCONFIG_TITLE    #language en-US "Advanced Config"
+#string STR_ADVANCEDCONFIG_MANAGER_HELP  #language en-US "Enter this interface to view and set the advanced config information"
+
+#string STR_FORM_X100CONFIG_TITLE        #language en-US "X100 Config"
+#string STR_FORM_X100CONFIG_HELP         #language en-US "Enter this interface to view and set the X100 information"
+#string STR_FORM_PCIEDEVICEINFO_TITLE    #language en-US "PCIE Device Info"
+#string STR_FORM_PCIEDEVICEINFO_HELP     #language en-US "Enter this interface to view pcie device information"
+#string STR_FORM_HDDINFO_TITLE           #language en-US "HDD Info"
+#string STR_FORM_HDDINFO_TITLE_HELP      #language en-US "Enter this interface to view hard disk information and sata controller information."
+
+#string STR_X100_SE_VERSION              #language en-US "X100 Se Version"
+#string STR_X100_SE_BUILDTIME            #language en-US "X100 Se Build Time"
+#string STR_X100_SE_VERSION_VALUE        #language en-US "N/A"
+#string STR_X100_SE_BUILDTIME_VALUE      #language en-US "N/A"
+
+#string STR_ENABLE_X100_USB              #language en-US "USB Enable"
+#string STR_ENABLE_X100_USB_HELP         #language en-US "USB controller of X100 enable/disable control,which takes effect after saving and restarting."
+#string STR_ENABLE_X100_SATA             #language en-US "SATA Enable"
+#string STR_ENABLE_X100_SATA_HELP        #language en-US "SATA controller of X100 enable/disable control,which takes effect after saving and restarting."
+#string STR_ENABLE_X100_DISPLAY          #language en-US "DISPLAY Enable"
+#string STR_ENABLE_X100_DISPLAY_HELP     #language en-US "Display controller of X100 enable/disable control in OS, which takes effect aster saving and restarting."
+
+#string STR_NONE                         #language en-US " "
+#string STR_ENABLE                       #language en-US "Enable"
+#string STR_DISABLE                      #language en-US "Disable"
+#string STR_MISSING_STRING               #language en-US  "Missing String"
+
+#string STR_SATA_PORT0_USED              #language en-US " Sata Port 1 Used"
+#string STR_SATA_PORT1_USED              #language en-US " Sata Port 2 Used"
+#string STR_SATA_PORT2_USED              #language en-US " Sata Port 3 Used"
+#string STR_SATA_PORT3_USED              #language en-US " Sata Port 4 Used"
+
+#string STR_SATA_PORT0_USED_HELP         #language en-US "Sata Port 1 Used State."
+#string STR_SATA_PORT1_USED_HELP         #language en-US "Sata Port 2 Used State."
+#string STR_SATA_PORT2_USED_HELP         #language en-US "Sata Port 3 Used State."
+#string STR_SATA_PORT3_USED_HELP         #language en-US "Sata Port 4 Used State."
+
+#string STR_SATA_PORT0_ENABLE            #language en-US " Sata Port 1 Enable"
+#string STR_SATA_PORT1_ENABLE            #language en-US " Sata Port 2 Enable"
+#string STR_SATA_PORT2_ENABLE            #language en-US " Sata Port 3 Enable"
+#string STR_SATA_PORT3_ENABLE            #language en-US " Sata Port 4 Enable"
+
+#string STR_SATA_PORT0_ENABLE_HELP       #language en-US "Set sata port 1 enable/disable."
+#string STR_SATA_PORT1_ENABLE_HELP       #language en-US "Set sata port 2 enable/disable."
+#string STR_SATA_PORT2_ENABLE_HELP       #language en-US "Set sata port 3 enable/disable."
+#string STR_SATA_PORT3_ENABLE_HELP       #language en-US "Set sata port 4 enable/disable."
+
+#string STR_YES                          #language en-US "Yes"
+#string STR_NO                           #language en-US "No"
+
+#string STR_PCIE_SWITCH                  #language en-US "PCIE Switch Config:"
+
+#string STR_ENABLE_X100_PCIEX2_0_ENABLE  #language en-US "PCIE X2-0 Enable"
+#string STR_ENABLE_X100_PCIEX2_1_ENABLE  #language en-US "PCIE X2-1 Enable"
+#string STR_ENABLE_X100_PCIEX1_0_ENABLE  #language en-US "PCIE X1-0 Enable"
+#string STR_ENABLE_X100_PCIEX1_1_ENABLE  #language en-US "PCIE X1-1 Enable"
+#string STR_ENABLE_X100_PCIEX1_2_ENABLE  #language en-US "PCIE X1-2 Enable"
+#string STR_ENABLE_X100_PCIEX1_3_ENABLE  #language en-US "PCIE X1-3 Enable"
+
+#string STR_ENABLE_X100_PCIEX2_0_ENABLE_HELP  #language en-US "Set PCIE X2-0 Enable/Disable."
+#string STR_ENABLE_X100_PCIEX2_1_ENABLE_HELP  #language en-US "Set PCIE X2-1 Enable/Disable."
+#string STR_ENABLE_X100_PCIEX1_0_ENABLE_HELP  #language en-US "Set PCIE X1-0 Enable/Disable."
+#string STR_ENABLE_X100_PCIEX1_1_ENABLE_HELP  #language en-US "Set PCIE X1-1 Enable/Disable."
+#string STR_ENABLE_X100_PCIEX1_2_ENABLE_HELP  #language en-US "Set PCIE X1-2 Enable/Disable."
+#string STR_ENABLE_X100_PCIEX1_3_ENABLE_HELP  #language en-US "Set PCIE X1-3 Enable/Disable.
+
+#string STR_FORM_USBDEVICEINFO_TITLE          #language en-US "USB Device Info"
+#string STR_USB_CONTROLLER_LIST               #language en-US "USB Controller List:"
+#string STR_USB_DEVICE_LIST                   #language en-US "USB Device List:"
+#string STR_FORM_USBDEVICEINFO_HELP           #language en-US "Enter this interface to view usb device and controller information"
+
+#string STR_HDD_MODULENAME                    #language en-US "  Module Name"
+#string STR_HDD_TYPE                          #language en-US "  Type"
+#string STR_HDD_SERIALNO                      #language en-US "  Serial No"
+#string STR_HDD_FWVERSION                     #language en-US "  Firmware Version"
+#string STR_HDD_SIZEGB                        #language en-US "  Capacity"
+#string STR_HDD_DEVICEPATH                    #language en-US "  DevicePath"
+
+#string STR_X100_DP0_USED                     #language en-US " DP0 Used"
+#string STR_X100_DP0_USED_HELP                #language en-US "DP0 Used State"
+#string STR_X100_DP1_USED                     #language en-US " DP1 Used"
+#string STR_X100_DP1_USED_HELP                #language en-US "DP1 Used State"
+#string STR_X100_DP2_USED                     #language en-US " DP2 Used"
+#string STR_X100_DP2_USED_HELP                #language en-US "DP2 Used State"
+
+#string STR_X100_DP0_DOWNSPREAD_ENABLE        #language en-US " DP0 DOWNSPREAD CTRL"
+#string STR_X100_DP0_DOWNSPREAD_ENABLE_HELP   #language en-US "Config DP0 downspread ctrl, enable or disable."
+#string STR_X100_DP1_DOWNSPREAD_ENABLE        #language en-US " DP1 DOWNSPREAD CTRL"
+#string STR_X100_DP1_DOWNSPREAD_ENABLE_HELP   #language en-US "Config DP1 downspread ctrl, enable or disable."
+#string STR_X100_DP2_DOWNSPREAD_ENABLE        #language en-US " DP2 DOWNSPREAD CTRL"
+#string STR_X100_DP2_DOWNSPREAD_ENABLE_HELP   #language en-US "Config DP2 downspread ctrl, enable or disable."
+
+#string STR_FAN_CONTROL                       #language en-US "X100 Port's Fan Control Config:"
+#string STR_CPU_FAN_ENABLE                    #language en-US "cpu-fan ENABLE"
+#string STR_CPU_FAN_ENABLE_HELP               #language en-US "Config cpu-fan enable or disable"
+#string STR_X100_FAN_ENABLE                   #language en-US "x100-fan ENABLE"
+#string STR_X100_FAN_ENABLE_HELP              #language en-US "Config x100-fan enable or disable"
+#string STR_SYS_FAN_ENABLE                    #language en-US "sys-fan ENABLE"
+#string STR_SYS_FAN_ENABLE_HELP               #language en-US "Config sys-fan enable or disable"
+
+#string STR_CPU_FAN_CCR                       #language en-US "cpu-fan speed"
+#string STR_CPU_FAN_CCR_HELP                  #language en-US "set cpu-fan speed by pwm's CCR"
+#string STR_X100_FAN_CCR                      #language en-US "X100-fan speed"
+#string STR_X100_FAN_CCR_HELP                 #language en-US "set X100-fan speed by pwm's CCR"
+#string STR_SYS_FAN_CCR                       #language en-US "sys-fan speed"
+#string STR_SYS_FAN_CCR_HELP                  #language en-US "set sys-fan speed by pwm's CCR"
+
+#string STR_LOW_SPEED                         #language en-US "low-speed"
+#string STR_MEDIUM_SPEED                      #language en-US "medium-speed"
+#string STR_HIGH_SPEED                        #language en-US "high-speed"
+#string STR_X100_EDPLIGHTVALUE                #language en-US "Edp BackLight"
+#string STR_X100_EDPLIGHTVALUE_HELP           #language en-US "Config edp backlight value, range 1 - 100."
+
+#string STR_USR_PASSWD                        #language en-US "User password"
+#string STR_USR_PASSWD_HELP                   #language en-US "Input User password, 6 - 15 characters"
+
+#string STR_ADMIN_PASSWD                      #language en-US "Admin password"
+#string STR_ADMIN_PASSWD_HELP                 #language en-US "Input Admin password, 6 - 15 characters"
+
+#string STR_PASSWD_TITLE                      #language en-US "Password Config"
+#string STR_PASSWD_TITLE_HELP                 #language en-US "Enter this interface to view and set the password config information"
+
+#string MINI_STRING                           #language en-US  "Please enter enough characters"
+
+#string STR_TIME_PROMPT                       #language en-US  "System Time"
+#string STR_TIME_HELP                         #language en-US  "This is the help for the time (hour/minute/second)"
+
+#string STR_DATE_PROMPT                       #language en-US  "System Date"
+#string STR_DATE_HELP                         #language en-US  "This is the help for the Date (month/day/year)"
+
+#string STR_DATE_EMPTY                        #language en-US  " "
+#string STR_ERROR_POPUP                       #language en-US  "You typed in something bad!"
+
+#string STR_MODULE_ABSTRACT                   #language en-US "Provides the capability to configure advanced config in a setup browser"
+
+#string STR_MODULE_DESCRIPTION                #language en-US "By this module, user may change the advanced config."
+

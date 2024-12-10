@@ -1,0 +1,28 @@
+##
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = Dw_I2CLib
+  FILE_GUID                      = beb88122-ad59-44b8-a067-e9cd9b84e6d1
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = I2CLib
+
+[Sources.common]
+  DwI2CLib.c
+
+[FeaturePcd]
+
+[Pcd]
+
+[Packages]
+  MdePkg/MdePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+
+[LibraryClasses]
+  PcdLib
+  BaseLib
+  DebugLib
+  IoLib
+  TimerLib

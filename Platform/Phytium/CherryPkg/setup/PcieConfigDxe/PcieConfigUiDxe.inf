@@ -1,0 +1,81 @@
+## @file
+#  Provides the capbility to configure pcie in a setup browser
+#  By this module, user may change the pcie configuration.
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PcieConfigUiDxe
+  MODULE_UNI_FILE                = PcieConfigUiDxe.uni
+  FILE_GUID                      = 6b5039fa-2106-11ec-8e8d-4f18e3e4e39a
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PcieConfigUiDriverEntryPoint
+  UNLOAD_IMAGE                   = PcieConfigUiDriverUnload
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 EBC
+#
+
+[Sources]
+  PcieConfig.c
+  PcieConfig.h
+  PcieConfigFormGuid.h
+  PcieConfigUi.vfr
+  PcieConfigUi.uni
+  PcieConfigDriver.c
+  PcieConfigUiDxe.uni
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+ # PhytiumPkg/PhytiumGeneral/PhytiumGeneral.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+  
+[LibraryClasses]
+  UefiRuntimeServicesTableLib
+  ReportStatusCodeLib
+  MemoryAllocationLib
+  UefiLib
+  UefiBootServicesTableLib
+  BaseMemoryLib
+  DebugLib
+  PrintLib
+  HiiLib
+  ArmSmcLib
+  BaseLib
+  HobLib
+  UefiDriverEntryPoint
+  ParameterTableLib
+
+[Guids]
+  gEfiIfrTianoGuid                              ## CONSUMES ## GUID (Extended IFR Guid Opcode)
+  gEfiIfrFrontPageGuid                          ## CONSUMES ## GUID
+  gPcieConfigVarGuid
+  gPcieConfigFormSetGuid
+
+[Protocols]
+  gEfiHiiConfigAccessProtocolGuid               ## CONSUMES
+  gEfiDevicePathToTextProtocolGuid              ## CONSUMES
+  gEdkiiFormBrowserEx2ProtocolGuid              ## CONSUMES
+  gEfiHiiConfigRoutingProtocolGuid
+  gEfiDevicePathProtocolGuid
+  gEfiFirmwareVolume2ProtocolGuid
+
+[Pcd]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow                         ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn                      ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution         ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution           ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn                 ## CONSUMES ## SOMETIMES_PRODUCES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow                    ## CONSUMES ## SOMETIMES_PRODUCES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution    ## CONSUMES
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution      ## CONSUMES
+
+[Depex]
+  gEfiHiiConfigRoutingProtocolGuid  AND
+  gEfiHiiDatabaseProtocolGuid       AND
+  gEfiVariableArchProtocolGuid      AND
+  gEfiVariableWriteArchProtocolGuid

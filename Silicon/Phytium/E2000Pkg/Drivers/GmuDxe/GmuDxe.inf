@@ -1,0 +1,59 @@
+# @file
+# Copyright (c) 2022, Phytium Technology Co., Ltd. All rights reserved.
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+[Defines]
+  INF_VERSION                    = 0x0001001B
+  BASE_NAME                      = GmuSnpDxe
+  FILE_GUID                      = dedd17b8-d80c-11ec-8217-0b931175fab2
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = GmuSnpDxeEntry
+
+[Sources.common]
+  ComponentName.c
+  Driver.c
+  Snp.h
+  Snp.c
+  Mac.h
+  Mac.c
+  Phy.c
+  Phy.h
+  GenPhy.h
+  GenPhy.c
+
+[Packages]
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+  NetworkPkg/NetworkPkg.dec
+  ArmPkg/ArmPkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+[LibraryClasses]
+  BaseLib
+  BaseMemoryLib
+  DebugLib
+  DevicePathLib
+  IoLib
+  NetLib
+  TimerLib
+  UefiDriverEntryPoint
+  UefiLib
+  ArmLib
+  MemoryAllocationLib
+  PcdLib
+[Protocols]
+  gEdkiiNonDiscoverableDeviceProtocolGuid
+  gEfiDevicePathProtocolGuid
+  gEfiDriverBindingProtocolGuid
+  gEfiMetronomeArchProtocolGuid
+  gEfiSimpleNetworkProtocolGuid
+
+[Pcd]
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumMacFromEfuseEnable
+[Depex]
+  TRUE 
+  
+[Guids]
+  gEfiEventExitBootServicesGuid
+

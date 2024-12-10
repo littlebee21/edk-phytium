@@ -1,0 +1,60 @@
+## @file
+#  Phytium Usb2 host controller driver.
+#
+#  Copyright (C) 2022 - 2023, Phytium Technology Co., Ltd. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+[Defines]
+  INF_VERSION                    = 0x0001001B
+  BASE_NAME                      = PhytiumUsb2Dxe
+  FILE_GUID                      = ac115334-4775-11ed-b34e-f784af5d0325
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 1.0
+
+  ENTRY_POINT                    = PhytiumUsb2DriverEntryPoint
+
+[Sources.common]
+  Common.c
+  Common.h
+  ComponentName.c
+  ComponentName.h
+  Dma.c
+  Dma.h
+  Host.c
+  Host.h
+  Reg.h
+  Usb2.c
+  Usb2.h
+
+[Packages]
+  EmbeddedPkg/EmbeddedPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+
+[LibraryClasses]
+  ArmLib
+  BaseLib
+  BaseMemoryLib
+  IoLib
+  MemoryAllocationLib
+  TimerLib
+  UefiDriverEntryPoint
+  UefiLib
+
+[Guids]
+  gPhytiumUsb2NonDiscoverableDeviceGuid
+
+[Protocols]
+  gEdkiiNonDiscoverableDeviceProtocolGuid
+  gEfiCpuArchProtocolGuid
+  gEfiDevicePathProtocolGuid
+  gEfiUsb2HcProtocolGuid
+  gHardwareInterrupt2ProtocolGuid
+
+[Pcd]
+
+[Depex]
+  TRUE

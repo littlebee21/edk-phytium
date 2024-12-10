@@ -1,0 +1,188 @@
+## @file
+# This package provides E2000 Phytium silicon modules.
+#
+# Copyright (C) 2020, Phytium Technology Co,Ltd. All rights reserved.
+#
+# SPDX-License-Identifier:BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  DEC_SPECIFICATION              = 0x0001001b
+  PACKAGE_NAME                   = PhytiumE2000Pkg
+  PACKAGE_GUID                   = a8e56b88-a5d5-11ec-a4c6-e38e5342b63d
+  PACKAGE_VERSION                = 0.1
+
+################################################################################
+#
+# Include Section - list of Include Paths that are provided by this package.
+#                   Comments are used for Keywords and Module Types.
+#
+# Supported Module Types:
+#  BASE SEC PEI_CORE PEIM DXE_CORE DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER DXE_SAL_DRIVER UEFI_DRIVER UEFI_APPLICATION
+#
+################################################################################
+[Includes]
+  Include             # Root include for the package
+
+[Guids.common]
+  gPsuUsb3NonDiscoverableDeviceGuid = {0x415a1bdc, 0xb181, 0x11ec, {0x84, 0x1a, 0x13, 0xa1, 0xd0, 0x70, 0xe0, 0x09}}
+  gSocSataNonDiscoverableDeviceGuid = {0x16554326, 0xbaff, 0x11ec, {0xa1, 0x7b, 0x33, 0xb0, 0x10, 0x1f, 0x0d, 0x70}}
+  gSocDcDpNonDiscoverableDeviceGuid = {0xa561612c, 0xbf86, 0x11ec, {0x89, 0xc1, 0xf7, 0x47, 0x79, 0x60, 0x5d, 0xd6}}
+  gSocDcDpConfigGuid = {0x6d9da7de, 0xed1a, 0x11ec, {0x8e, 0x95, 0x97, 0x7f, 0x3c, 0x38, 0x22, 0x8c}}
+  gGmuNonDiscoverableDeviceGuid = {0x3b2deb7e, 0xd64f, 0x11ec, {0x92, 0x18, 0x47, 0xbe, 0x37, 0xc7, 0xf6, 0x02}}
+  gUpdateBiosGuid = {0x68FEB399, 0xEC8B, 0x440a, { 0x84, 0x0E, 0xca, 0xbe, 0xea, 0xfd, 0x1a, 0x10 }}
+  #Ddr training information hob
+  gDdrTrainInfoAddrHobGuid = {0xc7106872, 0x6315, 0x11ec, {0x95, 0x48, 0x37, 0xe7, 0x3b, 0x19, 0x45, 0x45}}
+  gPhytiumUsb2NonDiscoverableDeviceGuid = {0xd47c123a, 0x5771, 0x11ed, {0x94, 0x0e, 0xcf, 0x06, 0xbc, 0x63, 0x46, 0x0e}}
+  gPcieConfigVarGuid = {0x0667d08e, 0x280e, 0x11ec, {0xb6, 0xed,0x63, 0x0f, 0x40, 0xab, 0x4d, 0x48}}
+  gPlatformMemoryInfoGuid        = {0xd91e19b6, 0xda4d, 0x11eb, { 0x80, 0x07, 0xd3, 0x50, 0xff, 0x2a, 0x9d, 0x01 } }
+[PcdsFeatureFlag.common]
+
+[PcdsFixedAtBuild.common]
+  gPhytiumPlatformTokenSpaceGuid.PcdParameterTableBase|0x0|UINT64|0x00000001
+  #
+  #Usb
+  #
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuUsb30BaseAddress|0x31A08000|UINT64|0x00000002
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuUsb30Region|0x18000|UINT64|0x00000003
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuUsb31BaseAddress|0x31A28000|UINT64|0x00000004
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuUsb31Region|0x18000|UINT64|0x00000005
+  #
+  #Sata
+  #
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuSataBaseAddress|0x31A40000|UINT64|0x00000006
+  gPhytiumPlatformTokenSpaceGuid.PcdPsuSataRegion|0x2000|UINT64|0x00000007
+  gPhytiumPlatformTokenSpaceGuid.PcdGsdSataBaseAddress|0x32014000|UINT64|0x00000008
+  gPhytiumPlatformTokenSpaceGuid.PcdGsdSataRegion|0x2000|UINT64|0x00000009
+  #
+  #DPDC
+  #
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpBaseAddress|0x32000000|UINT64|0x0000000A
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpRegion|0x6000|UINT64|0x0000000B
+  gPhytiumPlatformTokenSpaceGuid.PcdDpPhyBaseAddress|0x32300000|UINT64|0x0000000C
+  gPhytiumPlatformTokenSpaceGuid.PcdDpPhyRegion|0x2000|UINT64|0x0000000D
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpConfig|0x0|UINT64|0x0000000E
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpChanel0Enable|TRUE|BOOLEAN|0x0000003D
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpChanel1Enable|TRUE|BOOLEAN|0x0000003E
+  #
+  #Gmu
+  #
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu0BaseAddress|0x3200C000|UINT64|0x00000010
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu0Region|0x2000|UINT64|0x00000012
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu1BaseAddress|0x3200E000|UINT64|0x00000013
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu1Region|0x2000|UINT64|0x00000014
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu2BaseAddress|0x32010000|UINT64|0x00000015
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu2Region|0x2000|UINT64|0x00000016
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu3BaseAddress|0x32012000|UINT64|0x00000017
+  gPhytiumPlatformTokenSpaceGuid.PcdGmu3Region|0x2000|UINT64|0x00000018
+  #
+  #Pad Information Address
+  #
+  gPhytiumPlatformTokenSpaceGuid.PcdPadInfoAddr|0x0|UINT64|0x00000019
+  #
+  #Phytium E2000 board type
+  #
+  #0 -  Q:A
+  #1 -  Q:B
+  #2 -  Q:C1
+  #3 -  Q:C2
+  #4 -  D/S:A
+  #5 -  D/S:B
+  #6 -  D/S:C1
+  #7 -  D/S:C2
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumBoardType|0x0|UINT64|0x0000001A
+  #
+  #Mac 0, 1, 2 and 3 Information, switch and configuration
+  # Enable : 1 - Enable, 0 - Disable
+  # Interface : 0 - Usxgmii, 1 - Xgmii, 2 - Sgmii, 3 - rgmii, 4 - rmii
+  # Autoeng : 0 - not auto, 1 - auto
+  # Speed : 10 - 10M, 100 - 100M, 1000 - 1G, 2500 - 2.5G, 10000 - 10G
+  # Duplex : 0 - Half, 1 - Full
+  # Mac : Mac Address
+  #Mac 0
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Enable|FALSE|BOOLEAN|0x0000001B
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Interface|0x2|UINT32|0x0000001C
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Autoeng|0x1|UINT32|0x0000001D
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Speed|0x3E8|UINT32|0x0000001E
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Duplex|0x1|UINT32|0x0000001F
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu0Mac|{0x0}|VOID*|0x00000020
+  #Mac 1
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Enable|FALSE|BOOLEAN|0x00000021
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Interface|0x2|UINT32|0x00000022
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Autoeng|0x1|UINT32|0x00000023
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Speed|0x3E8|UINT32|0x00000024
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Duplex|0x1|UINT32|0x00000025
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu1Mac|{0x0}|VOID*|0x00000026
+  #Mac 2
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Enable|FALSE|BOOLEAN|0x00000027
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Interface|0x2|UINT32|0x00000028
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Autoeng|0x1|UINT32|0x00000029
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Speed|0x3E8|UINT32|0x0000002A
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Duplex|0x1|UINT32|0x0000002B
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu2Mac|{0x0}|VOID*|0x0000002C
+  #Mac 3
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Enable|FALSE|BOOLEAN|0x0000002D
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Interface|0x2|UINT32|0x0000002E
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Autoeng|0x1|UINT32|0x0000002F
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Speed|0x3E8|UINT32|0x00000030
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Duplex|0x1|UINT32|0x00000031
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGmu3Mac|{0x0}|VOID*|0x00000032
+  #usb
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb30Enable|FALSE|BOOLEAN|0x00000033
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb31Enable|FALSE|BOOLEAN|0x00000034
+  #sata
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumPsuSataEnable|FALSE|BOOLEAN|0x00000035
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumGsdSataEnable|FALSE|BOOLEAN|0x00000036
+  #oc bypass
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb30OverrunBypass|FALSE|BOOLEAN|0x00000037
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb31OverrunBypass|FALSE|BOOLEAN|0x00000038
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb20OverrunBypass|FALSE|BOOLEAN|0x00000039
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb21OverrunBypass|FALSE|BOOLEAN|0x0000003A
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumVhubOverrunBypass|FALSE|BOOLEAN|0x0000003B
+  #Pad Table
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumPadTableEnable|FALSE|BOOLEAN|0x0000003C
+  #ddr training information save address
+  gPhytiumPlatformTokenSpaceGuid.PcdDdrTrainInfoSaveBaseAddress|0x0|UINT64|0x0000003F
+  #eMMC
+  gPhytiumPlatformTokenSpaceGuid.PcdEmmcDxeBaseAddress|0x28000000|UINT64|0x00000041
+  #eMMC bus width 1, 4 or 8
+  gPhytiumPlatformTokenSpaceGuid.PcdEmmcBusWidth|4|UINT32|0x00000040
+  #Mhu
+  gPhytiumPlatformTokenSpaceGuid.PcdMhuBaseAddress|0x32A00000|UINT64|0x00000042
+  gPhytiumPlatformTokenSpaceGuid.PcdMhuShareMemoryBase|0x32A10000|UINT64|0x00000043
+  #DcDp Acpi Cma function Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdDcDpCmaEnable|TRUE|BOOLEAN|0x00000044
+  #SATA0 and PCIe auto detect function Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdSata0PcieAutoDetectEnableEnable|FALSE|BOOLEAN|0x00000045
+  #Port value of SATA0 and PCIe detect function, for Example, GPIO1-8 : 0x18, GPIO3-14 : 0x3E
+  gPhytiumPlatformTokenSpaceGuid.PcdSata0PcieAutoDetectPort|0x0E|UINT8|0x00000046
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumQosConfig|FALSE|BOOLEAN|0x00000047
+
+  #Cppc function Enable
+  gPhytiumPlatformTokenSpaceGuid.PcdCppcFunctionEnable|TRUE|BOOLEAN|0x00000048
+  #Usb2 Switch
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P20Enable|FALSE|BOOLEAN|0x00000049
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P21Enable|FALSE|BOOLEAN|0x0000004A
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P22Enable|FALSE|BOOLEAN|0x0000004B
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P3Enable|FALSE|BOOLEAN|0x0000004C
+  gPhytiumPlatformTokenSpaceGuid.PcdUsb2P4Enable|FALSE|BOOLEAN|0x0000004D
+ # SMBIOS
+  gPhytiumPlatformTokenSpaceGuid.PcdBiosSize|0x0|UINT8|0x000000e1
+  gPhytiumPlatformTokenSpaceGuid.PcdType|0x0|UINT8|0x000000e2
+  gPhytiumPlatformTokenSpaceGuid.PcdHeight|0x0|UINT8|0x000000e3
+  #Backlight GPIOPort detect function, for Example, GPIO1-8 : 0x18, GPIO3-14 : 0x3E ,Backlight PWM Port detect: PWM0: 0, PWM3: 3
+ gPhytiumPlatformTokenSpaceGuid.PcdEdpBacklightEnable|FALSE|BOOLEAN|0x0000004f
+ gPhytiumPlatformTokenSpaceGuid.PcdBacklightEnableGpio|0x1C|UINT8|0x00000050
+ gPhytiumPlatformTokenSpaceGuid.PcdBacklightPwrGpio|0x1D|UINT8|0x00000051
+ gPhytiumPlatformTokenSpaceGuid.PcdBacklightPwmPort|0|UINT8|0x00000052
+  #Mac_from_efuse
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumMacFromEfuseEnable|FALSE|BOOLEAN|0x0000004e
+ 
+#sgmii 1g training
+  gPhytiumPlatformTokenSpaceGuid.PcdSgmiiTraining|TRUE|BOOLEAN|0x000000e4
+[Protocols]
+  gEfiPhytiumSocIdeControllerInitProtocolGuid = {0x94e09d1c, 0xbb0e, 0x11ec, {0x8b, 0xe8, 0x03, 0x2c, 0x02, 0xa5, 0xd6, 0xbb}}
+  gEfiLpcProtocolGuid         = { 0xdc2c75aa, 0x021a, 0x43e7, { 0x8d, 0x6a, 0x88, 0xb2, 0x3b, 0x20, 0x47, 0xdf } }
+  gAcpiUpdateAfterPciEmunGuid = {0x67030a02, 0x2dd6, 0x11ed, {0x93, 0x74, 0x53, 0x4c, 0x81, 0xd0, 0x85, 0x32}}
+  gPhytiumMmcHostProtocolGuid = {0xf1482828, 0xea41, 0x11ed, {0x80, 0xe3, 0xbf, 0xc7, 0xcc, 0x7d, 0xa5, 0xfc}}

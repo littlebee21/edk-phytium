@@ -1,0 +1,43 @@
+##
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PadLib
+  FILE_GUID                      = 53ed2aaa-ec7d-11ec-97d3-87dc119cfe3c
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PadLib
+
+[Sources.common]
+  PadLib.c
+
+[Guids]
+
+[FeaturePcd]
+
+[FixedPcd]
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb30OverrunBypass
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb31OverrunBypass
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb20OverrunBypass
+  gPhytiumPlatformTokenSpaceGuid.PcdPhytiumUsb21OverrunBypass
+  gPhytiumPlatformTokenSpaceGuid.PcdSata0PcieAutoDetectEnableEnable
+  gPhytiumPlatformTokenSpaceGuid.PcdSata0PcieAutoDetectPort
+  gPhytiumPlatformTokenSpaceGuid.PcdSgmiiTraining
+
+[Packages]
+  MdePkg/MdePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  ArmPkg/ArmPkg.dec
+  ArmPlatformPkg/ArmPlatformPkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+
+[LibraryClasses]
+  PcdLib
+  BaseLib
+  DebugLib
+  IoLib
+  MemoryAllocationLib
+  BaseMemoryLib
+  ArmSmcLib
+  ParameterTableLib

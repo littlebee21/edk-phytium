@@ -1,0 +1,65 @@
+/** @file
+  String definitions for PCIE Configuration form.
+**/
+/=#
+#langdef    en-US  "English"
+
+#string STR_FORM_PCIECONFIG_TITLE        #language en-US "PCIE Config"
+#string STR_PCIECONFIG_MANAGER_HELP      #language en-US "Enter this interface to view and set the pcie config information"
+
+#string STR_FORM_PCIECONFIG_TITLE        #language en-US "PCIE Config"
+#string STR_FORM_PCIECONFIG_HELP         #language en-US "Enter this interface to view and set the pcie information"
+
+
+#string STR_NONE                         #language en-US " "
+#string STR_ENABLE                       #language en-US "Enable"
+#string STR_DISABLE                      #language en-US "Disable"
+
+#string STR_PCIE0                        #language en-US "PCIE0"
+#string STR_PCIE1                        #language en-US "PCIE1"
+
+#string STR_PCIE_SPLIT_MODE              #language en-US "Split Mode"
+#string STR_PCIE_SPLIT_MODE_HELP         #language en-US "Configure the splitting mode of PCIe, which can be configured as x16 or x8x8.If split mode is X16, the configuration of c1 is same as c0."
+
+#string STR_X1X1                          #language en-US "X1X1"
+#string STR_X1X0                          #language en-US "X1X0"
+#string STR_X0X1                          #language en-US "X0X1"
+#string STR_X0X0                          #language en-US "X0X0"
+
+#string STR_X1X1X1X1                      #language en-US "X1X1X1X1"
+#string STR_X2X1X1                        #language en-US "X2X1X1"
+#string STR_X4                            #language en-US "X4"
+#string STR_X0                            #language en-US "X0"
+
+#string STR_PCIE_CONTROL0_ENABLE         #language en-US "C0 Enable"
+#string STR_PCIE_CONTROL0_ENABLE_HELP    #language en-US "Enable/Disable C0."
+#string STR_PCIE_CONTROL0_SPEED          #language en-US "C0 Speed"
+#string STR_PCIE_CONTROL0_SPEED_HELP     #language en-US "Config C0 speed."
+#string STR_AUTO                         #language en-US "Auto"
+#string STR_GEN1                         #language en-US "GEN1"
+#string STR_GEN2                         #language en-US "GEN2"
+#string STR_GEN3                         #language en-US "GEN3"
+#string STR_PCIE_CONTROL0_EQ             #language en-US "C0 EQ"
+#string STR_PCIE_CONTROL0_EQ_HELP        #language en-US "Config C0 equalization, the range is 0-10."
+
+#string STR_PCIE_CONTROL1_ENABLE         #language en-US "C1 Enable."
+#string STR_PCIE_CONTROL1_ENABLE_HELP    #language en-US "Enable/Disable C1.If split mode is X16, the configuration is same as c0."
+#string STR_PCIE_CONTROL1_SPEED          #language en-US "C1 Speed"
+#string STR_PCIE_CONTROL1_SPEED_HELP     #language en-US "Config C1 speed.If split mode is X16, the configuration is same as c0."
+#string STR_PCIE_CONTROL1_EQ             #language en-US "C1 EQ"
+#string STR_PCIE_CONTROL1_EQ_HELP        #language en-US "Config C1 equalization, the range is 0-10.If split mode is X16, the configuration is same as c0."
+
+#string STR_PCIE_CONTROL2_ENABLE         #language en-US "C2 Enable."
+#string STR_PCIE_CONTROL2_ENABLE_HELP    #language en-US "Enable/Disable C2."
+#string STR_PCIE_CONTROL2_SPEED          #language en-US "C2 Speed"
+#string STR_PCIE_CONTROL2_SPEED_HELP     #language en-US "Config C2 speed."
+#string STR_PCIE_CONTROL2_EQ             #language en-US "C2 EQ"
+#string STR_PCIE_CONTROL2_EQ_HELP        #language en-US "Config C2 equalization, the range is 0-10."
+
+#string STR_PCIE_CONTROL3_ENABLE         #language en-US "C3 Enable."
+#string STR_PCIE_CONTROL3_ENABLE_HELP    #language en-US "Enable/Disable C3."
+#string STR_PCIE_CONTROL3_SPEED          #language en-US "C3 Speed"
+#string STR_PCIE_CONTROL3_SPEED_HELP     #language en-US "Config C3 speed."
+#string STR_PCIE_CONTROL3_EQ             #language en-US "C3 EQ"
+#string STR_PCIE_CONTROL3_EQ_HELP        #language en-US "Config C3 equalization, the range is 0-10."
+

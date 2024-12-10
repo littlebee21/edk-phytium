@@ -1,0 +1,38 @@
+
+[Defines]
+  INF_VERSION                    = 0x00010019
+  BASE_NAME                      = PwmLib
+  FILE_GUID                      = 93A9583A-6349-11DC-B763-4BFE0B77155F
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PwmLib
+
+[Sources]
+  Pwm.c
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+
+
+
+[LibraryClasses]
+  BaseLib
+  IoLib
+  ArmSmcLib
+  BaseMemoryLib
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  DebugLib
+  MemoryAllocationLib
+  GpioLib
+
+[Pcd]
+  gPhytiumPlatformTokenSpaceGuid.PcdBacklightEnableGpio
+  gPhytiumPlatformTokenSpaceGuid.PcdBacklightPwrGpio
+  gPhytiumPlatformTokenSpaceGuid.PcdBacklightPwmPort
+
+

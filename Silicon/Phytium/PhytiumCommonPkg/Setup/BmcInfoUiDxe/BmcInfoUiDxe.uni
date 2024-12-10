@@ -1,0 +1,118 @@
+/** @file
+String definitions for bmc configuration Configuration form.
+
+Copyright (c) 2023, Phytium Technology Co., Ltd. All rights reserved.
+
+SPDX-License-Identifier: BSD-2-Clause-Patent
+**/
+/=#
+/=#
+#langdef   en-US "English"
+
+
+#string STR_BMC_INFO_FORM                    #language en-US "BMC Information"
+#string STR_BMC_INFO_FORM_HELP               #language en-US "Select this option to see and config BMC information."
+
+#string STR_BMC_ID                           #language en-US "Device ID"
+#string STR_BMC_ID_VALUE                     #language en-US "N/A"
+
+#string STR_BMC_VER                          #language en-US "Device Rev"
+#string STR_BMC_VER_VALUE                    #language en-US "N/A"
+
+#string STR_BMC_CHECK                        #language en-US "Self Test"
+#string STR_BMC_CHECK_VALUE                  #language en-US "N/A"
+
+#string STR_BMC_FM_VENDER                    #language en-US "Manufacturer Id"
+#string STR_BMC_FM_VENDER_VALUE              #language en-US "N/A"
+
+#string STR_BMC_FM_VER                       #language en-US "Firmware Rev"
+#string STR_BMC_FM_VER_VALUE                 #language en-US "N/A"
+
+#string STR_BMC_IPMI_VER                     #language en-US "IPMI Rev"
+#string STR_BMC_IPMI_VER_VALUE               #language en-US "N/A"
+
+#string STR_BMC_FM_INFO                      #language en-US "BMC Firmware"
+
+#string STR_BMC_DEVICE_INFO                  #language en-US "BMC Device"
+
+#string STR_EMPTY                            #language en-US " "
+
+#string STR_LAST_STRING                      #language en-US " "
+
+#string STR_BMC_NETWORK                      #language en-US "BMC Network"
+
+#string STR_BMC_ACCOUNT                      #language en-US "BMC Account"
+
+#string STR_IP_ADDRESS_SOURCE                #language en-US "ip source"
+#string STR_IP_ADDRESS_SOURCE_HELP           #language en-US "get or config bmc ip source"
+
+#string STR_IP_ADDRESS_LABEL                 #language en-US "ip address"
+#string STR_IP_ADDRESS_HELP                  #language en-US "get or config bmc ip address"
+
+#string STR_SUBNETMASK                       #language en-US "subnet mask"
+#string STR_SUBNETMASK_HELP                  #language en-US "get or config bmc subnet mask"
+
+#string STR_GATEWAY                          #language en-US "GatewayIp"
+#string STR_GATEWAY_HELP                     #language en-US "get or config bmc GatewayIp"
+
+#string STR_PWRUP                            #language en-US "Power Up"
+#string STR_RESTORE                          #language en-US "Restore Previous State"
+#string STR_PWROFF                           #language en-US "Power Off"
+
+#string STR_POWERPOLICY                      #language en-US "Power Policy"
+
+#string STR_RESTORE_AC                       #language en-US "Restore On Ac Power Loss"
+#string STR_RESTORE_AC_HELP                  #language en-US "Config Restore On Ac Power Loss"
+
+#string STR_WATCHDOG_POST                    #language en-US "Watchdog for POST"
+#string STR_WATCHDOG_OS                      #language en-US "Watchdog for OS"
+
+
+#string STR_WDT_ENABLE                       #language en-US "Watchdog Enable for POST"
+#string STR_WDT_ENABLE_HELP                  #language en-US "Watchdog Enable for POST"
+
+#string STR_WDT_TIMEOUT                      #language en-US "Watchdog Timeout for POST"
+#string STR_WDT_TIMEOUT_HELP                 #language en-US "Watchdog Timeout for POST"
+
+#string STR_WDT_TIMEOUT_ACTION               #language en-US "Watchdog Timeout Action for POST"
+#string STR_WDT_TIMEOUT_ACTION_HELP          #language en-US "Watchdog Timeout Action for POST"
+
+#string STR_WDT_TIMEOUT_ACT1                 #language en-US "No Action"
+#string STR_WDT_TIMEOUT_ACT2                 #language en-US "Hard Reset"
+#string STR_WDT_TIMEOUT_ACT3                 #language en-US "Power Down"
+#string STR_WDT_TIMEOUT_ACT4                 #language en-US "Power Cycle"
+
+#string STR_WDT_ENABLE_OS                    #language en-US "Watchdog Enable for OS"
+#string STR_WDT_ENABLE_OS_HELP               #language en-US "Watchdog Enable for OS"
+
+#string STR_WDT_TIMEOUT_OS                   #language en-US "Watchdog Timeout for OS"
+#string STR_WDT_TIMEOUT_OS_HELP              #language en-US "Watchdog Timeout for OS"
+
+#string STR_WDT_TIMEOUT_ACTION_OS            #language en-US "Watchdog Timeout Action for OS"
+#string STR_WDT_TIMEOUT_ACTION_OS_HELP       #language en-US "Watchdog Timeout Action for OS"
+
+#string STR_ENABLE                           #language en-US "Enable"
+#string STR_DISABLE                          #language en-US "Disable"
+
+#string STR_BMC_USER_NAME                    #language en-US "BMC User Name"
+#string STR_BMC_USER_PASSWORD                #language en-US "BMC User Password"
+#string STR_BMC_USER_NAME_VAL                #language en-US " "
+#string STR_BMC_USER_NAME_VAL_2              #language en-US " "
+#string STR_BMC_USER_NAME_VAL_3              #language en-US " "
+#string STR_BMC_USER_NAME_VAL_4              #language en-US " "
+#string STR_BMC_USER_NAME_VAL_5              #language en-US " "
+#string STR_BMC_USER_NAME_VAL_6              #language en-US " "
+#string STR_BMC_USER_NAME_VAL_7              #language en-US " "
+#string STR_BMC_USER_NAME_VAL_8              #language en-US " "
+#string STR_BMC_USER_NAME_VAL_9              #language en-US " "
+#string STR_BMC_USER_NAME_VAL_10             #language en-US " "
+#string STR_BMC_USER_NAME_VAL_11             #language en-US " "
+#string STR_BMC_USER_NAME_VAL_12             #language en-US " "
+#string STR_BMC_USER_NAME_VAL_13             #language en-US " "
+#string STR_BMC_USER_NAME_VAL_14             #language en-US " "
+#string STR_BMC_USER_NAME_VAL_15             #language en-US " "
+
+#string STR_DHCP                             #language en-US "DHCP"
+#string STR_STATIC                           #language en-US "STATIC"
+#string STR_UNKNOWN                          #language en-US "UNKNOWN"
+

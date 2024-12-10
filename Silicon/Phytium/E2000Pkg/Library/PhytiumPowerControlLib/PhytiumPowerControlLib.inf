@@ -1,0 +1,62 @@
+#/* @file
+#  Copyright (c) 2016-2022, Phytium Technology Co.,Ltd. All rights reserved.
+#
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+#
+#*/
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PhytiumPowerControlLib
+  FILE_GUID                      = 3ecdf584-2d5a-11eb-a6f9-5fdcdc754179
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = PhytiumPowerControlLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  ArmPkg/ArmPkg.dec
+  ArmPlatformPkg/ArmPlatformPkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+
+[LibraryClasses]
+  IoLib
+  ArmLib
+  ArmSmcLib
+  MemoryAllocationLib
+  ParameterTableLib
+  SerialPortLib
+  HobLib
+  BaseMemoryLib
+  TimerLib
+  EcLib
+
+[Sources.common]
+  PowerControl.c
+  PowerControl.h
+
+[Guids]
+  gPlatformMemoryInforGuid
+  gPlatformCpuInforGuid
+  gPlatformPciHostInforGuid
+
+[FeaturePcd]
+  gEmbeddedTokenSpaceGuid.PcdCacheEnable
+
+[FixedPcd]
+  gArmTokenSpaceGuid.PcdSystemMemoryBase
+  gArmTokenSpaceGuid.PcdSystemMemorySize
+  gArmTokenSpaceGuid.PcdFvBaseAddress
+
+  gPhytiumPlatformTokenSpaceGuid.PcdSystemIoBase
+  gPhytiumPlatformTokenSpaceGuid.PcdSystemIoSize
+
+  gPhytiumPlatformTokenSpaceGuid.PcdPciConfigBase
+  gPhytiumPlatformTokenSpaceGuid.PcdPciConfigSize
+
+[Pcd]
+  gArmPlatformTokenSpaceGuid.PcdCoreCount

@@ -1,0 +1,93 @@
+/*
+*PCCT Table
+*/
+
+#include "ArmPlatform.h"
+#include <IndustryStandard/Acpi63.h>
+
+#define EFI_ACPI_6_3_PLATFORM_COMMUNICATIONS_CHANNEL_TABLE_SIGNATURE  SIGNATURE_32('P', 'C', 'C', 'T')
+
+typedef struct {
+    EFI_ACPI_6_3_PLATFORM_COMMUNICATION_CHANNEL_TABLE_HEADER Header;
+    EFI_ACPI_6_3_PCCT_SUBSPACE_1_HW_REDUCED_COMMUNICATIONS SubSpace[3];
+} PHYTIUM_PCCT_TABLE;
+
+PHYTIUM_PCCT_TABLE PcctTable = {
+    {
+        ARM_ACPI_HEADER(EFI_ACPI_6_3_PLATFORM_COMMUNICATIONS_CHANNEL_TABLE_SIGNATURE,
+                PHYTIUM_PCCT_TABLE,
+                EFI_ACPI_6_3_PLATFORM_COMMUNICATION_CHANNEL_TABLE_REVISION),
+        0,//EFI_ACPI_6_3_PCCT_FLAGS_PLATFORM_INTERRUPT,
+        0,
+    },
+    {
+        //AP_TO_SCP
+        {
+            EFI_ACPI_6_3_PCCT_SUBSPACE_TYPE_1_HW_REDUCED_COMMUNICATIONS,
+            sizeof(EFI_ACPI_6_3_PCCT_SUBSPACE_1_HW_REDUCED_COMMUNICATIONS),
+            54,
+            0,
+            0,
+            0x32A11B00,
+            0x100,
+            {
+                0,
+                32,
+                0,
+                3,
+                0x32A00108,
+            },
+            0,
+            0x4,
+            500,
+            0,
+            0
+        },
+        //AP_TO_SCP
+        {
+            EFI_ACPI_6_3_PCCT_SUBSPACE_TYPE_1_HW_REDUCED_COMMUNICATIONS,
+            sizeof(EFI_ACPI_6_3_PCCT_SUBSPACE_1_HW_REDUCED_COMMUNICATIONS),
+            54,
+            0,
+            0,
+            0x32A11900,
+            0x100,
+            {
+                0,
+                32,
+                0,
+                3,
+                0x32A00108,
+            },
+            0,
+            1,
+            500,
+            0,
+            0
+        },
+        //AP_TO_SCP
+        {
+            EFI_ACPI_6_3_PCCT_SUBSPACE_TYPE_1_HW_REDUCED_COMMUNICATIONS,
+            sizeof(EFI_ACPI_6_3_PCCT_SUBSPACE_1_HW_REDUCED_COMMUNICATIONS),
+            54,
+            0,
+            0,
+            0x32A11A00,
+            0x100,
+            {
+                0,
+                32,
+                0,
+                3,
+                0x32A00108,
+            },
+            0,
+            0x2,
+            500,
+            0,
+            0
+        }
+    }
+};
+
+VOID* CONST ReferenceAcpiTable = &PcctTable;

@@ -1,0 +1,73 @@
+## @file
+#  Phytium E2000 Smbios driver.
+#
+#  Copyright (C) 2022 - 2023, Phytium Technology Co., Ltd. All rights reserved.<BR>
+#
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+##
+
+[Defines]
+  INF_VERSION                    = 0x0001001B
+  BASE_NAME                      = SmbiosPlatformDxe
+  FILE_GUID                      = 16c23ff0-cd0d-11ed-aed0-bf8be9472224
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+
+  ENTRY_POINT                    = SmbiosTablePublishEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = AARCH64
+#
+
+[Sources]
+  SmbiosPlatformDxe.c
+  SmbiosData.c
+  SmbiosPlatformDxe.h
+
+[Packages]
+  ArmPkg/ArmPkg.dec
+  ArmPlatformPkg/ArmPlatformPkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  MdePkg/MdePkg.dec
+  Silicon/Phytium/E2000Pkg/PhytiumE2000Pkg.dec
+  Silicon/Phytium/PhytiumCommonPkg/PhytiumCommonPkg.dec
+
+[LibraryClasses]
+  ArmLib
+  BaseMemoryLib
+  BaseLib
+  DebugLib
+  HobLib
+  IoLib
+  I2CLib
+  MemoryAllocationLib
+  PcdLib
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+  ParameterTableLib
+  EcLib
+[Guids]
+  gEfiGlobalVariableGuid
+  gOemDataSetupGuid
+
+[FixedPcd]
+  gPhytiumPlatformTokenSpaceGuid.PcdBiosSize
+  gPhytiumPlatformTokenSpaceGuid.PcdSpdI2cControllerBaseAddress
+  gPhytiumPlatformTokenSpaceGuid.PcdSpdI2cControllerSpeed
+  gPhytiumPlatformTokenSpaceGuid.PcdDdrI2cAddress
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString
+  gPhytiumPlatformTokenSpaceGuid.PcdType
+  gPhytiumPlatformTokenSpaceGuid.PcdHeight
+
+[Protocols]
+  gEfiSmbiosProtocolGuid                      # PROTOCOL ALWAYS_CONSUMED
+  gEfiPciRootBridgeIoProtocolGuid
+
+[Guids]
+  gPlatformMemoryInforGuid
+  gPlatformCpuInforGuid
+
+[Depex]
+  gEfiSmbiosProtocolGuid
